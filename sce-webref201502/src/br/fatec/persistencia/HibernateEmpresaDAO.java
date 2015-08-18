@@ -81,6 +81,7 @@ public class HibernateEmpresaDAO implements IEmpresaDAO {
 			lista = query.getResultList();
 
 		} catch (Throwable e) {
+			  e.printStackTrace();
 		}
 		return lista;
 	}
