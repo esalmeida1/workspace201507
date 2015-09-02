@@ -4,7 +4,9 @@ import java.util.InputMismatchException;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-
+/*
+ * Manter empresa 
+ */
 @Entity
 public class Empresa {
 
