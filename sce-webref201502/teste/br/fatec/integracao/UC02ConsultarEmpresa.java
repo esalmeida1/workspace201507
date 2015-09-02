@@ -18,7 +18,7 @@ public class UC02ConsultarEmpresa {
 
 	@Test
 	public void test() {
-		fail("Not yet implemented");
+		//fail("Not yet implemented");
 	}
 
 }

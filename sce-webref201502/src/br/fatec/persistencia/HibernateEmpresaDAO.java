@@ -15,7 +15,7 @@ public class HibernateEmpresaDAO implements IEmpresaDAO {
 
 	public String cadastra(Empresa e) {
 
-		logger.info(">>>>>>>>>>>>>>>>>>>>>>>>>inicializando o procedimento cadastra");
+		logger.info("inicializando a transacao cadastra");
 		String codigoRetorno = "";
 		try {
 			EntityManagerFactory factory = Persistence.createEntityManagerFactory("sceweb");
@@ -27,14 +27,14 @@ public class HibernateEmpresaDAO implements IEmpresaDAO {
 			codigoRetorno = "Cadastro realizado com sucesso";
 		} catch (PersistenceException exception) { // HibernateException
 			codigoRetorno = "Erro no cadastro";
-			logger.error("disparou um erro na transacao de persistencia do tipo " + exception.toString());
+			logger.error("disparou um erro na transacao de persistencia do tipo " + exception.getMessage());
 		}
 		return codigoRetorno;
 	}
 
 	public int exclui(String cnpj) {
 
-		logger.info("inicializando o procedimento");
+		logger.info("inicializando a transacao exclui");
 		int codigoRetorno = 0;
 		try {
 			EntityManagerFactory factory = Persistence.createEntityManagerFactory("sceweb");
@@ -45,7 +45,7 @@ public class HibernateEmpresaDAO implements IEmpresaDAO {
 			Query query = em.createQuery(jpql);
 			query.setParameter("cnpj", cnpj);
 			codigoRetorno = query.executeUpdate();
-			logger.info(" >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>resultado da query exclui cnpj ="+ cnpj + " e codigoRetorno =" + codigoRetorno + " excluido");
+			logger.info(" resultado da query exclui cnpj ="+ cnpj + " e codigoRetorno =" + codigoRetorno + " excluido");
 			em.getTransaction().commit();
 		} catch (HibernateException exception) {
 			exception.printStackTrace();
@@ -54,8 +54,8 @@ public class HibernateEmpresaDAO implements IEmpresaDAO {
 	}
 
 	public Empresa consulta(Empresa e) {
-		Logger logger = Logger.getLogger("br.sceweb.dominio.empresa");
-		logger.info("inicializando o procedimento");
+		
+		logger.info("inicializando a transacao consulta");
 		Empresa nova = null;
 
 		try {
@@ -66,12 +66,14 @@ public class HibernateEmpresaDAO implements IEmpresaDAO {
 			em.getTransaction().commit();
 		} catch (HibernateException exception) {
 			exception.printStackTrace();
+			logger.error("disparou um erro na transacao de consulta do tipo " + exception.toString());
 		}
 		return nova;
 	}
 
 	@Override
 	public List<Empresa> findAll() {
+		logger.info("inicializando a transacao consulta");
 		List<Empresa> lista = new ArrayList<Empresa>();
 		try {
 			EntityManagerFactory factory = Persistence.createEntityManagerFactory("sceweb");
@@ -80,8 +82,9 @@ public class HibernateEmpresaDAO implements IEmpresaDAO {
 			Query query = em.createQuery("SELECT e from Empresa e");
 			lista = query.getResultList();
 
-		} catch (Throwable e) {
-			  e.printStackTrace();
+		} catch (Throwable exception) {
+			  exception.printStackTrace();
+			  logger.error("disparou um erro na transacao de consulta do tipo " + exception.toString());
 		}
 		return lista;
 	}
@@ -100,7 +103,7 @@ public class HibernateEmpresaDAO implements IEmpresaDAO {
 
 	@Override
 	public ArrayList<Empresa> consulta(String cnpj) {
-
+		logger.info("inicializando a transacao consulta");
 		List<Empresa> results = null;
 		try {
 			EntityManagerFactory factory = Persistence.createEntityManagerFactory("sceweb");
@@ -114,7 +117,7 @@ public class HibernateEmpresaDAO implements IEmpresaDAO {
 
 		} catch (HibernateException exception) {
 			// throw new Exception("ERRO..... " );
-			logger.error(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> excecao no consulta="	+ exception.getMessage());
+			logger.error("disparou um erro na transacao de consulta do tipo " + exception.getMessage());
 
 		}
 		return (ArrayList<Empresa>) results;
