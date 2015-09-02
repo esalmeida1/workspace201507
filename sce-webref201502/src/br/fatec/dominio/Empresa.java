@@ -91,6 +91,7 @@ public class Empresa {
 		}
 		
 		catch (InputMismatchException erro) {
+			erro.printStackTrace();
 	        return(false);
 	    }
 		
