@@ -24,11 +24,7 @@ public class UC03ExcluirEmpresa {
 		empresa.setCnpj("89424232000180");
 		empresa.setNomeFantasia("empresa x");
 		empresa.setEndereco("rua taquari");
-		empresa.setTelefone("12121212");
-		empresa.setResponsavel("jose silva");
-		empresa.setTelefoneResponsavel("121212");
-		empresa.setSetor("contabilidade");
-		empresa.setEmail("jsilva@gmail.com");
+		
 		empresaDAO.cadastra(empresa);
 	}
 	@Test

@@ -15,13 +15,8 @@ public class Empresa {
 	String nomeDaEmpresa;
 	String nomeFantasia;
 	String endereco;
-	String telefone;
-	String responsavel;
-	String telefoneResponsavel;
-	String setor;
-	String email;
-	String dataInicio;
-	String dataFim;
+	
+
 	/*
 	 * Obtem cnpj
 	 */
@@ -118,48 +113,7 @@ public class Empresa {
 	public void setEndereco(String endereco) {
 		this.endereco = endereco;
 	}
-	public String getTelefone() {
-		return telefone;
-	}
-	public void setTelefone(String telefone) {
-		this.telefone = telefone;
-	}
-	public String getResponsavel() {
-		return responsavel;
-	}
-	public void setResponsavel(String responsavel) {
-		this.responsavel = responsavel;
-	}
-	public String getTelefoneResponsavel() {
-		return telefoneResponsavel;
-	}
-	public void setTelefoneResponsavel(String telefoneResponsavel) {
-		this.telefoneResponsavel = telefoneResponsavel;
-	}
-	public String getSetor() {
-		return setor;
-	}
-	public void setSetor(String setor) {
-		this.setor = setor;
-	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
-	public String getDataInicio() {
-		return dataInicio;
-	}
-	public void setDataInicio(String dataInicio) {
-		this.dataInicio = dataInicio;
-	}
-	public String getDataFim() {
-		return dataFim;
-	}
-	public void setDataFim(String dataFim) {
-		this.dataFim = dataFim;
-	}
+
 	
 		
 }
