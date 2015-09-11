@@ -6,7 +6,6 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import br.fatec.dominio.Empresa;
-import br.fatec.persistencia.EmpresaDAO;
 import br.fatec.persistencia.HibernateEmpresaDAO;
 
 public class UC01CadastrarEmpresa1 {
